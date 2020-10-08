@@ -14,7 +14,7 @@ int main(int argc, char* args[])
 	glutInit(&argc, args);
 
 	//objeto juego
-	juego partida1;
+	juego partida01;
 
 	glutMainLoop();
 
