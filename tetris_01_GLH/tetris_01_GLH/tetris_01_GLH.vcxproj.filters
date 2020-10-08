@@ -18,5 +18,13 @@
     <ClCompile Include="tetris_01_GLH.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="juego.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="juego.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
