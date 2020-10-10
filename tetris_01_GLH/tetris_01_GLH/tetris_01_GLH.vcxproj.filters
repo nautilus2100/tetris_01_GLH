@@ -21,9 +21,21 @@
     <ClCompile Include="juego.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="cuadrado.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="figura.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="juego.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="cuadrado.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="figura.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
