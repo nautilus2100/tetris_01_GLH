@@ -2,6 +2,7 @@
 #include "GL\glut.h"
 #include <iostream>
 #include "cuadrado.h"
+#include "figura.h"
 
 using namespace std;
 
@@ -24,6 +25,7 @@ private:
 	
 	static float fps;
 	//static cuadrado objeto1;
+	//static figura ele;
 	
 	
 };

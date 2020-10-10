@@ -4,14 +4,8 @@
 int juego::alto = 600;
 float juego::fps = 60.f;
 int juego::ancho = 800;
-//cuadrado* juego::objeto1;
 cuadrado* ob1 = new cuadrado(); //extraer variable directamente de clase 
-
-
-
-
-
-
+figura* ele = new figura(5); // extraido directamente de figura.h sin declarar la variable en figura.h sino aqui directamente
 
 
 juego::juego()
@@ -54,13 +48,7 @@ void juego::iniciar()
 
 	// el 0 esta en el centro de la pantalla con eje X, Y  en donde si hay positivos y negativos.
 	
-
-	
-
 }
-
-
-
 
 
 void juego::dibujar()
@@ -72,8 +60,10 @@ void juego::dibujar()
 	
 	dibujar_tablero();
 	
+	//dibujando cuadrado
 	//cuadrado* ob1 = new cuadrado();
-	ob1->dibujar();
+	//ob1->dibujar();
+	ele->dibujar();
 	
 	/*objeto1.dibujar();*/
 	   
@@ -96,12 +86,14 @@ void juego::actualizar()
 	static float actulizar_cuadrado = 0;
 	//cuadrado* ob2 = new cuadrado();
 
-	if (glutGet(GLUT_ELAPSED_TIME) - (tiempo_transcurrido + 1.f/fps) > 0)
+	//if (glutGet(GLUT_ELAPSED_TIME) - (tiempo_transcurrido + 1.f/fps) > 0)
+	if ((glutGet(GLUT_ELAPSED_TIME) > tiempo_transcurrido + 1.f))
 	{
-		if ( (glutGet(GLUT_ELAPSED_TIME) > actulizar_cuadrado + 1.f))
+		if ( (glutGet(GLUT_ELAPSED_TIME) > actulizar_cuadrado + 1000.f))
 		{
 			actulizar_cuadrado = glutGet(GLUT_ELAPSED_TIME);
-			ob1->actualizar();
+			//ob1->actualizar(); //cuadrado de ejemplo
+			ele->actualizar();
 			//objeto1.actualizar();
 		}
 

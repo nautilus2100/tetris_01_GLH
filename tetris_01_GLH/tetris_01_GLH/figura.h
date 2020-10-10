@@ -11,7 +11,7 @@ public:
 
 
 private:
-	cuadrado cuadrados[4];
+	//cuadrado cuadrados[4];
 	unsigned short id;
 };
 
