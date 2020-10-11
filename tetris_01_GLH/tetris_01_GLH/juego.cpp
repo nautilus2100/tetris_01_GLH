@@ -94,6 +94,10 @@ void juego::procesar_teclado(unsigned char c, int x, int y)
 	case 'W': case 'w':
 		pieza->set_y(30);
 		break;
+	case ' ': 
+		pieza->rotar();
+		break;
+
 
 	default:
 		break;

@@ -10,11 +10,14 @@ public:
 	void dibujar();
 	void set_x(double x);
 	void set_y(double y);
-
+	void rotar();
 
 
 private:
 	//cuadrado cuadrados[4];
 	unsigned short id;
+	unsigned short rotacion;
+	double pos_x2;
+	double pos_y2;
 };
 

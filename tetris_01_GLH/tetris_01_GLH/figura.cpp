@@ -5,7 +5,9 @@ cuadrado cuadrados[4];
 figura::figura(unsigned short num)
 {
 	id = num; // numero para seleccionar figura a construir
-	
+	rotacion = 1; // valor de rotacion
+	pos_x2 = 0; // posicion matriz local para rotar
+	pos_y2 = 330; // posicion matriz local para rotar
 
 	// Se utiliza el switch aqui para construir la figura al principio en el constructor y despues mandarla a dibujar una sola vez
 	switch (id)
@@ -53,10 +55,12 @@ figura::figura(unsigned short num)
 
 void figura::actualizar()
 {
-	for (int i = 0; i < 4; i++)
+	pos_y2 -= 30;
+	
+	/*for (int i = 0; i < 4; i++)
 	{
 		cuadrados[i].actualizar();
-	}
+	}*/
 }
 
 void figura::dibujar()
@@ -86,28 +90,50 @@ void figura::dibujar()
 	default:
 		break;
 	}
+	// Actualiza la rotacion segun el valor que introduce usuario
 
-	//dibuja el conjunto de 4 cuadrados 
+	//dibuja el conjunto de 4 cuadrados dentro de una matriz local a 330 hacia arriba del centro de la pantalla
+	glPushMatrix();
+	glTranslatef(pos_x2, pos_y2, 0);
 	for (int i = 0; i < 4; i++)
 	{
 		cuadrados[i].dibujar();
 	}
+	glPopMatrix();
 }
 
 void figura::set_x(double x)
 {
-	for (int i = 0; i < 4; i++)
+	pos_x2 += x; // ahora se mueve la posicion de la matriz
+
+	//antes se movian los cuadros directamente
+	/*for (int i = 0; i < 4; i++)
 	{
 		cuadrados[i].set_x(x);
-	}
+	}*/
 
 }
 
 void figura::set_y(double y)
 {
-	for (int i = 0; i < 4; i++)
+	pos_y2 += y;
+
+	/*for (int i = 0; i < 4; i++)
 	{
 		cuadrados[i].set_y(y);
+	}*/
+
+}
+
+//funcion para rotar la matriz local de las figuras
+void figura::rotar()
+{
+	rotacion++;
+	if (rotacion > 4) rotacion = 1; // llevar este dato a cuadrado.cpp para rotar la matriz local
+	
+	for (int i = 0; i < 4; i++)
+	{
+		cuadrados[i].set_rotacion(rotacion); // rota cada uno de los cuadros gracias a esta funcion heredada de cuadrado.h
 	}
 
 }
