@@ -5,6 +5,7 @@ cuadrado cuadrados[4];
 figura::figura(unsigned short num)
 {
 	id = num; // numero para seleccionar figura a construir
+	
 
 	// Se utiliza el switch aqui para construir la figura al principio en el constructor y despues mandarla a dibujar una sola vez
 	switch (id)
@@ -91,4 +92,22 @@ void figura::dibujar()
 	{
 		cuadrados[i].dibujar();
 	}
+}
+
+void figura::set_x(double x)
+{
+	for (int i = 0; i < 4; i++)
+	{
+		cuadrados[i].set_x(x);
+	}
+
+}
+
+void figura::set_y(double y)
+{
+	for (int i = 0; i < 4; i++)
+	{
+		cuadrados[i].set_y(y);
+	}
+
 }

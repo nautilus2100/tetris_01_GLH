@@ -5,7 +5,7 @@ int juego::alto = 600;
 float juego::fps = 60.f;
 int juego::ancho = 800;
 cuadrado* ob1 = new cuadrado(); //extraer variable directamente de clase 
-figura* ele = new figura(5); // extraido directamente de figura.h sin declarar la variable en figura.h sino aqui directamente
+figura* pieza = new figura(5); // extraido directamente de figura.h sin declarar la variable en figura.h sino aqui directamente
 
 
 juego::juego()
@@ -25,7 +25,7 @@ juego::juego()
 
 void juego::iniciar()
 {
-	glClearColor(0, 0, 1, 1);
+	glClearColor(0.1, 0.3, 1, 1);
 	glMatrixMode(GL_PROJECTION); glLoadIdentity();//carga el modo de matriz
 	//glMatrixMode(GL_PROJECTION);
 	//glLoadIdentity();
@@ -63,7 +63,7 @@ void juego::dibujar()
 	//dibujando cuadrado
 	//cuadrado* ob1 = new cuadrado();
 	//ob1->dibujar();
-	ele->dibujar();
+	pieza->dibujar();
 	
 	/*objeto1.dibujar();*/
 	   
@@ -74,8 +74,30 @@ void juego::dibujar()
 	glutSwapBuffers();
 }
 
-void juego::procesar_teclado(unsigned char p, int x, int y)
+void juego::procesar_teclado(unsigned char c, int x, int y)
 {
+
+	switch (c)
+	{
+	case 'A': case 'a':
+		pieza->set_x(-30);
+		break;
+
+	case 'D': case 'd':
+		pieza->set_x(30);
+		break;
+
+	case 'S': case 's':
+		pieza->set_y(-30);
+		break;
+
+	case 'W': case 'w':
+		pieza->set_y(30);
+		break;
+
+	default:
+		break;
+	}
 
 }
 
@@ -93,7 +115,7 @@ void juego::actualizar()
 		{
 			actulizar_cuadrado = glutGet(GLUT_ELAPSED_TIME);
 			//ob1->actualizar(); //cuadrado de ejemplo
-			ele->actualizar();
+			pieza->actualizar();
 			//objeto1.actualizar();
 		}
 
@@ -116,7 +138,7 @@ void juego::dibujar_tablero() // cuadro central - area de juego
 	//dibujando tablero
 	glPushMatrix();
 	glTranslatef(-ancho/4, alto/2, 0); // posicionandose en el lado superior izquierdo del nuestro tablero para desde ahi empezar a dibujar
-	glColor3f(1, 1, 1);
+	glColor3f(0, 0, 0);
 	glBegin(GL_QUAD_STRIP);
 	glVertex2f(0, 0);
 	glVertex2f(ancho/2, 0);
@@ -131,12 +153,6 @@ void juego::dibujar_tablero() // cuadro central - area de juego
 	glEnd();
 	
 	glPopMatrix();
-
-
-	
-	
-
-
 
 }
 
