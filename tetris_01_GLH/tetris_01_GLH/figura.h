@@ -6,11 +6,14 @@ class figura
 {
 public:
 	figura(unsigned short num); //1 ele, 2 ele invertida, 3 cubo, 4 triangulo, 5 palo
-	void actualizar();
+	bool actualizar();
 	void dibujar();
 	void set_x(double x);
-	void set_y(double y);
+	bool set_y(double y);
 	void rotar();
+
+	double get_x(unsigned short num) { return cuadrados[num].get_x(); } //obtencion de la posicion del cuadrado que va entrando a la lista
+	double get_y(unsigned short num) { return cuadrados[num].get_y(); } //obtencion de la posicion del cuadrado que va entrando a la lista
 
 
 private:

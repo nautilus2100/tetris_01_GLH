@@ -3,6 +3,7 @@
 #include <iostream>
 #include "cuadrado.h"
 #include "figura.h"
+#include <list>
 
 using namespace std;
 
@@ -24,6 +25,9 @@ private:
 	static int ancho;
 	
 	static float fps;
+
+	static list<cuadrado> cuadradosList; // lista para almacenar piezas posicionadas
+
 	//static cuadrado objeto1;
 	//static figura ele;
 	

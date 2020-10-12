@@ -6,6 +6,7 @@ float juego::fps = 60.f;
 int juego::ancho = 800;
 cuadrado* ob1 = new cuadrado(); //extraer variable directamente de clase 
 figura* pieza = new figura(5); // extraido directamente de figura.h sin declarar la variable en figura.h sino aqui directamente
+list<cuadrado> juego::cuadradosList;
 
 
 juego::juego()
@@ -119,7 +120,19 @@ void juego::actualizar()
 		{
 			actulizar_cuadrado = glutGet(GLUT_ELAPSED_TIME);
 			//ob1->actualizar(); //cuadrado de ejemplo
-			pieza->actualizar();
+			
+			 // evaluacion de la posicion del cuadrado
+			if (pieza->actualizar()) // si colision es verdadera
+			{
+				//recorre la posicion de cada cuadrado de una figura y guarda su posicion en una lista
+				for (int i = 0; i < 4; i++)
+				{
+					cuadradosList.push_back(cuadrado(pieza->get_x(i),pieza->get_y(i))); // a la lista cuadradosList se le agrega un cuadrado
+				}
+			}
+			
+			
+			
 			//objeto1.actualizar();
 		}
 

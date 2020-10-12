@@ -53,12 +53,18 @@ figura::figura(unsigned short num)
 	}
 }
 
-void figura::actualizar() // actualiza posicion automaticamente solo si la posicion es mayor a 15
+bool figura::actualizar() // actualiza posicion automaticamente solo si la posicion es mayor a 15
 {
+	bool colisiono = false;
 	if (pos_y2 > -285) // colision vs pared inferior del tablero
 	{
 		pos_y2 -= 30;
 	}
+	else
+	{
+		colisiono = true;
+	}
+	return colisiono;
 	
 	
 	/*for (int i = 0; i < 4; i++)
@@ -134,13 +140,20 @@ void figura::set_x(double x) //
 
 }
 
-void figura::set_y(double y) // funcion que solo baja si es mayor a 15
+bool figura::set_y(double y) // funcion que solo baja si es mayor a 15
 {
+	bool colisiono = false;
+
 	if (pos_y2 > -285)
 	{
 		pos_y2 += y;
 	}
+	else
+	{
+		colisiono = true; //si hay colicion con el piso devuelve true para preparar lista de cuadrados
+	}
 
+	return colisiono;
 	
 
 	/*for (int i = 0; i < 4; i++)

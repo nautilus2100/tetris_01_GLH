@@ -6,7 +6,8 @@ class cuadrado
 //class cuadrado : public juego
 {
 public:
-	cuadrado();
+	cuadrado(); // constructor para figura
+	cuadrado(double x, double y) { pos_x = x, pos_x = y; } // constructor para los cuadrados que se van almacenando en la lista de cuadradosList
 	void dibujar();
 	void set_x(double x) { pos_x += x; }  // para actualizar posicion sumando a la posicion anterior
 	void set_y(double y) { pos_y += y; }
