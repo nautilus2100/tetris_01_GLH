@@ -36,10 +36,10 @@ void cuadrado::dibujar()
 	glTranslated(pos_x, pos_y, 0);
 	//Color3f(1,1,0); // el color se asigna segun el id en la funcion dibujar dentro de figura.cpp
 	glBegin(GL_QUAD_STRIP);
-	glVertex2f(0, 0);
-	glVertex2f(30, 0);
-	glVertex2f(0, 30);
-	glVertex2f(30, 30);
+	glVertex2f(-15, -15);
+	glVertex2f(15, -15);
+	glVertex2f(-15, 15);
+	glVertex2f(15, 15);
 
 
 	glEnd();

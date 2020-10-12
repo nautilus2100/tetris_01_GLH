@@ -6,8 +6,8 @@ figura::figura(unsigned short num)
 {
 	id = num; // numero para seleccionar figura a construir
 	rotacion = 1; // valor de rotacion
-	pos_x2 = 0; // posicion matriz local para rotar
-	pos_y2 = 330; // posicion matriz local para rotar
+	pos_x2 = 15; // posicion matriz local para rotar
+	pos_y2 = 345; // posicion matriz local para rotar
 
 	// Se utiliza el switch aqui para construir la figura al principio en el constructor y despues mandarla a dibujar una sola vez
 	switch (id)
@@ -53,9 +53,13 @@ figura::figura(unsigned short num)
 	}
 }
 
-void figura::actualizar()
+void figura::actualizar() // actualiza posicion automaticamente solo si la posicion es mayor a 15
 {
-	pos_y2 -= 30;
+	if (pos_y2 > -285) // colision vs pared inferior del tablero
+	{
+		pos_y2 -= 30;
+	}
+	
 	
 	/*for (int i = 0; i < 4; i++)
 	{
@@ -102,9 +106,25 @@ void figura::dibujar()
 	glPopMatrix();
 }
 
-void figura::set_x(double x)
+void figura::set_x(double x) // 
 {
-	pos_x2 += x; // ahora se mueve la posicion de la matriz
+	if (x > 0)
+	{
+		if (pos_x2 < 135)
+		{
+			pos_x2 += x;
+		}
+		
+	}
+	else
+	{
+		if (pos_x2 > -135)
+		{
+			pos_x2 += x;
+			
+		}
+	}
+	
 
 	//antes se movian los cuadros directamente
 	/*for (int i = 0; i < 4; i++)
@@ -114,9 +134,14 @@ void figura::set_x(double x)
 
 }
 
-void figura::set_y(double y)
+void figura::set_y(double y) // funcion que solo baja si es mayor a 15
 {
-	pos_y2 += y;
+	if (pos_y2 > -285)
+	{
+		pos_y2 += y;
+	}
+
+	
 
 	/*for (int i = 0; i < 4; i++)
 	{
