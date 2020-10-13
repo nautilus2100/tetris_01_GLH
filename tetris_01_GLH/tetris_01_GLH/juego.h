@@ -19,7 +19,7 @@ public:
 	static void dibujar_tablero();
 	int exportar_alto();
 	int exportar_ancho();
-	static void dibujar_cuadrados();
+	static void dibujar_cuadrados(); //
 
 
 private:
