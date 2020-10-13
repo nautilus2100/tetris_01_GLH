@@ -5,13 +5,14 @@ int juego::alto = 600;
 float juego::fps = 60.f;
 int juego::ancho = 800;
 cuadrado* ob1 = new cuadrado(); //extraer variable directamente de clase 
-figura* pieza = new figura(5); // extraido directamente de figura.h sin declarar la variable en figura.h sino aqui directamente
-list<cuadrado> juego::cuadradosList;
+figura* pieza = new figura(rand()%6+1); // extraido directamente de figura.h sin declarar la variable en figura.h sino aqui directamente
+list<cuadrado> cuadradosList;
+//list<cuadrado> juego::cuadradosList;
 
 
 juego::juego()
 {
-	
+	srand(time(NULL)); // numeros aleatorios tomando el tiempo del sistema
 
 	glutInitDisplayMode(GLUT_RGB | GLUT_DOUBLE);
 	glutInitWindowPosition(50, 50);
@@ -65,6 +66,9 @@ void juego::dibujar()
 	//cuadrado* ob1 = new cuadrado();
 	//ob1->dibujar();
 	pieza->dibujar();
+
+	//RECORRER LISTA
+	dibujar_cuadrados();
 	
 	/*objeto1.dibujar();*/
 	   
@@ -127,12 +131,12 @@ void juego::actualizar()
 				//recorre la posicion de cada cuadrado de una figura y guarda su posicion en una lista
 				for (int i = 0; i < 4; i++)
 				{
-					cuadradosList.push_back(cuadrado(pieza->get_x(i),pieza->get_y(i))); // a la lista cuadradosList se le agrega un cuadrado
+					cuadradosList.push_back(cuadrado(pieza->get_x(i),pieza->get_y(i)-285)); // a la lista cuadradosList se le agrega un cuadrado
 				}
-			}
-			
-			
-			
+				//delete pieza;
+				pieza = new figura(rand() % 6 + 1); // extraido directamente de figura.h sin declarar la variable en figura.h sino aqui directamente
+				
+			}		
 			//objeto1.actualizar();
 		}
 
@@ -181,6 +185,17 @@ int juego::exportar_alto()
 int juego::exportar_ancho()
 {
 	return ancho;
+}
+
+void juego::dibujar_cuadrados()
+{
+	list<cuadrado>::iterator p = cuadradosList.begin();
+	while (p != cuadradosList.end()) // mientras p no sea el ultimo objeto de la lista
+	{
+		p->dibujar();
+		p++;
+
+	}
 }
 
 

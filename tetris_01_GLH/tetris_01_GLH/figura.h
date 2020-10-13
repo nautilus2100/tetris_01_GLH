@@ -12,15 +12,15 @@ public:
 	bool set_y(double y);
 	void rotar();
 
-	double get_x(unsigned short num) { return cuadrados[num].get_x(); } //obtencion de la posicion del cuadrado que va entrando a la lista
-	double get_y(unsigned short num) { return cuadrados[num].get_y(); } //obtencion de la posicion del cuadrado que va entrando a la lista
+	double get_x(unsigned short num);//obtencion de la posicion del cuadrado que va entrando a la lista
+	double get_y(unsigned short num); //obtencion de la posicion del cuadrado que va entrando a la lista
 
 
 private:
 	//cuadrado cuadrados[4];
 	unsigned short id;
 	unsigned short rotacion;
-	double pos_x2;
-	double pos_y2;
+	double pos_x;
+	double pos_y;
 };
 

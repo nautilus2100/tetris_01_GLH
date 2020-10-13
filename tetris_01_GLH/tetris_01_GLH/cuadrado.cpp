@@ -8,6 +8,12 @@ cuadrado::cuadrado()
 	pos_x = 0;
 	pos_y = 0;
 }
+
+cuadrado::cuadrado(double x, double y)
+{
+	pos_x = x, 
+	pos_y = y; 
+}
   
 void cuadrado::dibujar()
 {
@@ -16,6 +22,10 @@ void cuadrado::dibujar()
 	// Actualiza la rotacion segun el valor que introduce usuario
 	switch (rotacionImportada)
 	{
+	case 0:
+		glRotatef(0, 0, 0, 1);
+		break;
+
 	case 2:
 		glRotatef(90, 0, 0, 1);
 		break;

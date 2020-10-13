@@ -4,6 +4,7 @@
 #include "cuadrado.h"
 #include "figura.h"
 #include <list>
+#include <ctime> // libreria tiempo de sistema
 
 using namespace std;
 
@@ -18,6 +19,7 @@ public:
 	static void dibujar_tablero();
 	int exportar_alto();
 	int exportar_ancho();
+	static void dibujar_cuadrados();
 
 
 private:
@@ -26,7 +28,7 @@ private:
 	
 	static float fps;
 
-	static list<cuadrado> cuadradosList; // lista para almacenar piezas posicionadas
+	//static list<cuadrado> cuadradosList; // lista para almacenar piezas posicionadas
 
 	//static cuadrado objeto1;
 	//static figura ele;

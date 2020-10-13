@@ -6,20 +6,23 @@ figura::figura(unsigned short num)
 {
 	id = num; // numero para seleccionar figura a construir
 	rotacion = 1; // valor de rotacion
-	pos_x2 = 15; // posicion matriz local para rotar
-	pos_y2 = 345; // posicion matriz local para rotar
+	pos_x = 15; // posicion matriz local para rotar
+	pos_y = 345; // posicion matriz local para rotar
 
 	// Se utiliza el switch aqui para construir la figura al principio en el constructor y despues mandarla a dibujar una sola vez
 	switch (id)
 	{
 	case 1: // ele normal
+		cout << "figura 1" << endl;
 		cuadrados[1].set_x(30) ;
 		cuadrados[2].set_x(-30);
 		cuadrados[3].set_x(-30);
 		cuadrados[3].set_y(30);
+
 		break;
 
 	case 2: // ele invertida
+		cout << "figura 2" << endl;
 		cuadrados[1].set_x(30);
 		cuadrados[2].set_x(-30);
 		cuadrados[3].set_x(30);
@@ -27,13 +30,16 @@ figura::figura(unsigned short num)
 		break;
 
 	case 3: // te invertida
+		cout << "figura 3" << endl;
 		cuadrados[1].set_x(30);
 		cuadrados[2].set_x(-30);
+		cuadrados[2].set_y(-30);
 		cuadrados[3].set_x(0);
 		cuadrados[3].set_y(30);
 		break;
 
 	case 4: //cubo
+		cout << "figura 4" << endl;
 		cuadrados[1].set_x(30);
 		cuadrados[2].set_x(30);
 		cuadrados[2].set_y(30);
@@ -41,11 +47,23 @@ figura::figura(unsigned short num)
 		cuadrados[3].set_y(30);
 		break;
 
-	case 5:
+	case 5: // ELE minuscula
+		cout << "figura 5" << endl;
+		cuadrados[0].set_x(30);
+		cuadrados[0].set_y(-30);
 		cuadrados[1].set_x(30);
+		cuadrados[1].set_y(-30);
 		cuadrados[2].set_x(-30);
 		cuadrados[3].set_x(-60);
 		//cuadrados[3].set_y(30);
+		break;
+
+	case 6:
+		cout << "figura 6" << endl;
+		cuadrados[1].set_x(-30);
+		cuadrados[2].set_y(30);
+		cuadrados[3].set_x(30);
+		cuadrados[3].set_y(30);
 		break;
 
 	default:
@@ -56,9 +74,9 @@ figura::figura(unsigned short num)
 bool figura::actualizar() // actualiza posicion automaticamente solo si la posicion es mayor a 15
 {
 	bool colisiono = false;
-	if (pos_y2 > -285) // colision vs pared inferior del tablero
+	if (pos_y > -285) // colision vs pared inferior del tablero
 	{
-		pos_y2 -= 30;
+		pos_y -= 30;
 	}
 	else
 	{
@@ -104,7 +122,7 @@ void figura::dibujar()
 
 	//dibuja el conjunto de 4 cuadrados dentro de una matriz local a 330 hacia arriba del centro de la pantalla
 	glPushMatrix();
-	glTranslatef(pos_x2, pos_y2, 0);
+	glTranslatef(pos_x, pos_y, 0);
 	for (int i = 0; i < 4; i++)
 	{
 		cuadrados[i].dibujar();
@@ -114,19 +132,20 @@ void figura::dibujar()
 
 void figura::set_x(double x) // 
 {
+	cout << x << endl;
 	if (x > 0)
 	{
-		if (pos_x2 < 135)
+		if (pos_x < 135)
 		{
-			pos_x2 += x;
+			pos_x += x;
 		}
 		
 	}
 	else
 	{
-		if (pos_x2 > -135)
+		if (pos_x > -135)
 		{
-			pos_x2 += x;
+			pos_x += x;
 			
 		}
 	}
@@ -143,10 +162,11 @@ void figura::set_x(double x) //
 bool figura::set_y(double y) // funcion que solo baja si es mayor a 15
 {
 	bool colisiono = false;
+	cout << y << endl;
 
-	if (pos_y2 > -285)
+	if (pos_y > -285)
 	{
-		pos_y2 += y;
+		pos_y += y;
 	}
 	else
 	{
@@ -174,4 +194,14 @@ void figura::rotar()
 		cuadrados[i].set_rotacion(rotacion); // rota cada uno de los cuadros gracias a esta funcion heredada de cuadrado.h
 	}
 
+}
+
+double figura::get_x(unsigned short num)
+{
+	return cuadrados[num].get_x(); 
+}
+
+double figura::get_y(unsigned short num)
+{
+	return cuadrados[num].get_y();
 }
