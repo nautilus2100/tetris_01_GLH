@@ -1,4 +1,5 @@
 #include "figura.h"
+#include <cmath>
 
 cuadrado cuadrados[4];
 
@@ -115,6 +116,10 @@ void figura::dibujar()
 		glColor3f(1, 0, 0);
 		break;
 
+	case 6:
+		glColor3f(0, 1, 0);
+		break;
+
 	default:
 		break;
 	}
@@ -196,12 +201,27 @@ void figura::rotar()
 
 }
 
+//Funcion para rotacion obtener rotacion global  
+double figura::get_angulo_cuadradito(unsigned short num)
+{
+	double angulo_cuadrado = atan2f(cuadrados[num].get_x(),cuadrados[num].get_y());
+	
+	cout << rad2deg(angulo_cuadrado) << endl;
+	
+	double rotacion_local = (rotacion - 1) * 90;
+
+	return angulo_cuadrado + rotacion_local;
+	
+	
+	return 0.0;
+}
+
 double figura::get_x(unsigned short num)
 {
-	return cuadrados[num].get_x(); 
+	return cuadrados[num].get_x()+ pos_x; 
 }
 
 double figura::get_y(unsigned short num)
 {
-	return cuadrados[num].get_y();
+	return cuadrados[num].get_y()+pos_y;
 }

@@ -13,7 +13,7 @@ list<cuadrado> cuadradosList;
 juego::juego()
 {
 	srand(time(NULL)); // numeros aleatorios tomando el tiempo del sistema
-
+	pieza = new figura(rand() % 6 + 1);
 	glutInitDisplayMode(GLUT_RGB | GLUT_DOUBLE);
 	glutInitWindowPosition(50, 50);
 	glutInitWindowSize(ancho, alto);
@@ -101,6 +101,7 @@ void juego::procesar_teclado(unsigned char c, int x, int y)
 		break;
 	case ' ': 
 		pieza->rotar();
+		pieza->get_angulo_cuadradito(1);
 		break;
 
 
@@ -131,11 +132,11 @@ void juego::actualizar()
 				//recorre la posicion de cada cuadrado de una figura y guarda su posicion en una lista
 				for (int i = 0; i < 4; i++)
 				{
-					cuadradosList.push_back(cuadrado(pieza->get_x(i),pieza->get_y(i)-285)); // a la lista cuadradosList se le agrega un cuadrado
+					cuadradosList.push_back(cuadrado(pieza->get_x(i),pieza->get_y(i))); // a la lista cuadradosList se le agrega un cuadrado
 				}
 				//delete pieza;
 				pieza = new figura(rand() % 6 + 1); // extraido directamente de figura.h sin declarar la variable en figura.h sino aqui directamente
-				
+				cout << "hola que hace" << endl;
 			}		
 			//objeto1.actualizar();
 		}

@@ -11,6 +11,8 @@ public:
 	void set_x(double x);
 	bool set_y(double y);
 	void rotar();
+	double get_angulo_cuadradito(unsigned short num);
+	float rad2deg(float radianes) { return radianes * 180 / 3.14; }
 
 	double get_x(unsigned short num);//obtencion de la posicion del cuadrado que va entrando a la lista
 	double get_y(unsigned short num); //obtencion de la posicion del cuadrado que va entrando a la lista
