@@ -204,16 +204,16 @@ void figura::rotar()
 //Funcion para rotacion obtener rotacion global  
 double figura::get_angulo_cuadradito(unsigned short num)
 {
-	double angulo_cuadrado = atan2f(cuadrados[num].get_x(),cuadrados[num].get_y());
+	double angulo_cuadrado = atan2f(cuadrados[num].get_y(),cuadrados[num].get_x()); // angulo local cuadradito
 	
-	cout << rad2deg(angulo_cuadrado) << endl;
+	//cout << rad2deg(angulo_cuadrado) << endl; // pasar de grados a radianes viene de nuestra funcion creada
 	
-	double rotacion_local = (rotacion - 1) * 90;
+	double rotacion_local = (rotacion - 1) * 90.0; // angulo local de conjunto de cuadraditos (figura)
 
-	return angulo_cuadrado + rotacion_local;
-	
-	
-	return 0.0;
+	//cout << rad2deg(angulo_cuadrado) + rotacion_local << endl; // pasar de grados a radianes viene de nuestra funcion creada
+
+	return angulo_cuadrado + deg2rad(rotacion_local);
+
 }
 
 double figura::get_x(unsigned short num)
@@ -225,3 +225,29 @@ double figura::get_y(unsigned short num)
 {
 	return cuadrados[num].get_y()+pos_y;
 }
+
+double figura::calcular_posicion_x(unsigned short num)
+{
+	double hipotenusa;
+
+	hipotenusa = sqrt((pow((cuadrados[num].get_x() ), 2))+(pow((cuadrados[num].get_y() ),2)));
+	
+	
+	return cos(get_angulo_cuadradito(num))*hipotenusa+pos_x;
+
+
+}
+
+double figura::calcular_posicion_y(unsigned short num)
+{
+	double hipotenusa;
+
+	hipotenusa = sqrt((pow((cuadrados[num].get_x()), 2)) + (pow((cuadrados[num].get_y()), 2)));
+
+
+	return sin(get_angulo_cuadradito(num)) * hipotenusa + pos_y;
+}
+
+
+	
+
