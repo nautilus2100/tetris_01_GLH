@@ -21,6 +21,7 @@ public:
 
 	double calcular_posicion_x(unsigned short num); // posiciones del cuadradito
 	double calcular_posicion_y(unsigned short num);
+	
 
 private:
 	//cuadrado cuadrados[4];

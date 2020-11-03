@@ -20,6 +20,7 @@ public:
 	int exportar_alto();
 	int exportar_ancho();
 	static void dibujar_cuadrados(); //
+	static void chequear_colision();
 
 
 private:

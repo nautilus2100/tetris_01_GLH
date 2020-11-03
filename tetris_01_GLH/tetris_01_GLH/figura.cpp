@@ -75,14 +75,25 @@ figura::figura(unsigned short num)
 bool figura::actualizar() // actualiza posicion automaticamente solo si la posicion es mayor a 15
 {
 	bool colisiono = false;
-	if (pos_y > -285) // colision vs pared inferior del tablero
+
+	for (int i = 0; i < 4; i++)
+	{
+		if ((int)calcular_posicion_y(i) > -280) // colision vs pared inferior del tablero
+		{
+			pos_y -= 30;
+		}
+		else
+		{
+			colisiono = true;
+		}
+
+	}
+
+	if (!colisiono) // si NO colisiono
 	{
 		pos_y -= 30;
 	}
-	else
-	{
-		colisiono = true;
-	}
+
 	return colisiono;
 	
 	
