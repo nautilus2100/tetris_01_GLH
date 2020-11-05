@@ -14,14 +14,14 @@ juego::juego()
 {
 	srand(time(NULL)); // numeros aleatorios tomando el tiempo del sistema
 	pieza = new figura(rand() % 6 + 1);
-	glutInitDisplayMode(GLUT_RGB | GLUT_DOUBLE);
-	glutInitWindowPosition(50, 50);
-	glutInitWindowSize(ancho, alto);
-	glutCreateWindow("Tetris extremo");
-	glutDisplayFunc(dibujar);
-	glutKeyboardFunc(procesar_teclado);
-	glutIdleFunc(actualizar);
-	iniciar();
+	glutInitDisplayMode(GLUT_RGB | GLUT_DOUBLE); //inicializa con doble bufer
+	glutInitWindowPosition(50, 50); // posicion inicial
+	glutInitWindowSize(ancho, alto); // tamaño ventana
+	glutCreateWindow("Tetris extremo"); // crear ventana con titulo
+	glutDisplayFunc(dibujar); // funcion para dibujar
+	glutKeyboardFunc(procesar_teclado); 
+	glutIdleFunc(actualizar); // funcion actualizar
+	iniciar(); // iniciar model matriz y perspectivas
 
 }
 
@@ -38,7 +38,8 @@ void juego::iniciar()
 	//// quinto y sexto valor lejania y cercania del eje z
 	glOrtho(0, ancho, 0, alto, -1, 1); // CAMARA
 	//glOrtho(0, ancho, 0, alto, -1, 1);
-	glMatrixMode(GL_MODELVIEW); glLoadIdentity();
+	glMatrixMode(GL_MODELVIEW); 
+	glLoadIdentity(); // carga
 	
 	
 	
@@ -76,10 +77,10 @@ void juego::dibujar()
 	glPopMatrix();
 
 
-	glutSwapBuffers();
+	glutSwapBuffers(); //muestra
 }
 
-void juego::procesar_teclado(unsigned char c, int x, int y)
+void juego::procesar_teclado(unsigned char c, int x, int y) // recibe coordenadas en x e y.
 {
 
 	switch (c)
@@ -150,7 +151,7 @@ void juego::actualizar()
 
 
 		tiempo_transcurrido = glutGet(GLUT_ELAPSED_TIME);
-		glutPostRedisplay();
+		glutPostRedisplay(); // remuestra displya continuamente
 		
 	}
 
